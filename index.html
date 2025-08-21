@@ -3,221 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Osman Mahat - Portfolio</title>
+    <meta name="description" content="Omar Osman Mahat - SCCM & Intune Administrator | IT Systems Expert | PowerShell Automation Specialist">
+    <meta name="keywords" content="SCCM, Intune, PowerShell, IT Administration, Automation, BitLocker, Microsoft 365">
+    <meta name="author" content="Omar Osman Mahat">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thekingsmakers.github.io/">
+    <meta property="og:title" content="Omar Osman Mahat - IT Systems Expert">
+    <meta property="og:description" content="SCCM & Intune Administrator | PowerShell Automation Specialist | IT Systems Expert">
+    <meta property="og:image" content="https://thekingsmakers.github.io/assets/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://thekingsmakers.github.io/">
+    <meta property="twitter:title" content="Omar Osman Mahat - IT Systems Expert">
+    <meta property="twitter:description" content="SCCM & Intune Administrator | PowerShell Automation Specialist | IT Systems Expert">
+    <meta property="twitter:image" content="https://thekingsmakers.github.io/assets/og-image.jpg">
+
+    <title>Omar Osman Mahat - IT Systems Expert | SCCM & Intune Administrator</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700;800&family=Cascadia+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Styles for the Microsoft Services Status tab */
-        .status-list {
-            list-style: none;
-            padding: 0;
-        }
-        .status-list li {
-            margin: 15px 0;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 500;
-        }
-        .status-up {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        .status-down {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .button {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Omar Osman Mahat",
+        "jobTitle": "SCCM & Intune Administrator",
+        "description": "IT Systems Expert and PowerShell Automation Specialist",
+        "url": "https://thekingsmakers.github.io",
+        "sameAs": [
+            "https://github.com/thekingsmakers",
+            "https://twitter.com/thekingsmakers",
+            "https://www.linkedin.com/in/omar-osman-mahat/"
+        ],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "IT Systems Management"
+        },
+        "knowsAbout": [
+            "SCCM", "Microsoft Intune", "PowerShell", "BitLocker", "Microsoft 365", "IT Automation"
+        ]
+    }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <h1>Omar Osman Mahat</h1>
-            <p class="subtitle">SCCM & Intune Administrator | IT Systems Expert</p>
-            <div class="clock" id="clock"></div>
-            <div class="theme-switch">
-                <label class="switch">
-                    <input type="checkbox" id="themeToggle">
-                    <span class="slider round"></span>
-                </label>
-                <span id="themeLabel">Light Mode</span>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Omar Mahat</span>
             </div>
-            <div class="links">
-                <a class="button" href="https://github.com/thekingsmakers/Intune" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-                <a class="button" href="https://twitter.com/thekingsmakers" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i> Twitter</a>
-                <a class="button" href="https://www.linkedin.com/in/omar-osman-mahat/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="azure-status.html" class="nav-link">Azure Status</a>
             </div>
-        </header>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            </div>
+    </nav>
 
-        <!-- Tabs Section -->
-        <section class="tabs">
-            <div class="tab-buttons">
-                <button class="tab-button active" data-tab="portfolio">Portfolio</button>
-                <button class="tab-button" data-tab="scripts">Scripts</button>
-                <button class="tab-button" data-tab="about">About Me</button>
-                <button class="tab-button" data-tab="status">Microsoft Services Status</button>
-            </div>
-            <div class="tab-content">
-                <!-- Portfolio Tab -->
-                <div id="portfolio" class="tab-pane active">
-                    <h2>My Work & Projects</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Project</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Password Expiration Notification</td>
-                                <td>GUI-based PowerShell tool that alerts users when passwords are near expiration.</td>
-                            </tr>
-                            <tr>
-                                <td>BitLocker Compliance Checker</td>
-                                <td>Evaluates device readiness for BitLocker silent encryption.</td>
-                            </tr>
-                            <tr>
-                                <td>Wallpaper Deployment</td>
-                                <td>Deploys custom wallpapers across enterprise devices using Intune.</td>
-                            </tr>
-                            <tr>
-                                <td>Camera Restriction by Location</td>
-                                <td>Enables/disables cameras based on geolocation using PowerShell.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Scripts Tab -->
-                <div id="scripts" class="tab-pane">
-                    <h2>Scripts</h2>
-                    <div class="script">
-                        <h3>TSS Log Collector</h3>
-                        <p>Collect TSS logs with Intune Remediation</p>
-                        <pre>iwr "https://raw.githubusercontent.com/thekingsmakers/Intune/main/Tss%20Logs/TSS_LOG_Collector.ps1" | iex</pre>
-                        <button class="copy-btn" onclick="copyCommand('scriptCommand_TSS_LOG_Collector')">Copy Command</button>
-                    </div>
-                    <div class="script">
-                        <h3>BitLocker Readiness Check</h3>
-                        <p>Check device readiness for BitLocker encryption.</p>
-                        <pre>iwr "https://raw.githubusercontent.com/thekingsmakers/Intune/main/Bitlocker/Scripts%20and%20remediation/All-Bitlocker-Requirements-Check-%20RemediationScript.ps1" | iex</pre>
-                        <button class="copy-btn" onclick="copyCommand('Bitcheck')">Copy Command</button>
-                    </div>
-                    <div class="script">
-                        <h3>Software installer</h3>
-                        <p>one script that will help you in installing most software. deploy it via sccm.</p>
-                        <pre>iwr "https://raw.githubusercontent.com/thekingsmakers/Intune/refs/heads/main/scriptrun/omarInstaller.ps1" | iex</pre>
-                        <button class="copy-btn" onclick="copyCommand('Bitcheck')">Copy Command</button>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text">Omar Osman Mahat</span>
+                    </h1>
+                    <p class="hero-subtitle">SCCM & Intune Administrator | IT Systems Expert</p>
+                    <p class="hero-description">
+                        Intune Administrator managing 50,000+ devices. Creating practical automation solutions that make IT professionals' lives easier. 
+                        From PowerShell scripts to AI tools, I build things that actually work.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            View My Work
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
-
-                <!-- About Me Tab -->
-                <div id="about" class="tab-pane">
-                    <h2>About Me</h2>
-                    <p>Hi, I’m Omar – an Intune admin, ex-SCCM admin, and tech enthusiast with a passion for automation and IT systems management. I specialize in developing PowerShell scripts and automation tools that simplify device management, enhance security, and improve user experiences. From deploying software through Intune and SCCM to automating password management and BitLocker configurations, I focus on making IT workflows efficient and user-friendly.</p>
-                    <p>I’m currently working on GitHub projects that automate software installations during computer imaging, using PowerShell to dynamically fetch and install the latest software. Additionally, I’m developing GitHub Actions bots that scrape Microsoft Intune documentation and tweet updates, ensuring IT professionals stay informed.</p>
-                    <p>My interests also extend to home automation and IoT, where I’m building tools to monitor electricity usage and control sockets via Arduino and Bluetooth. These projects reflect my drive to merge technology with practical, real-world solutions.</p>
-                    <p>Beyond tech, I run a Quran and Dawah channel, creating content that educates and inspires.</p>
-                    <p>Whether automating IT tasks or developing innovative tools, I’m always learning, evolving, and pushing the boundaries of what’s possible.</p>
-                    <p>Let’s innovate and automate the future together!</p>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="card-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-target="100">0</span>
+                                <span class="stat-label">Scripts</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="50">0</span>
+                                <span class="stat-label">K+ Devices</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+                </div>
+    </section>
 
-                <!-- Microsoft Services Status Tab -->
-                <div id="status" class="tab-pane">
-                    <h2>Microsoft Services Status</h2>
-                    <button class="button" onclick="checkStatus()">Check Status</button>
-                    <ul class="status-list" id="statusList"></ul>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passionate about technology and automation</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        Hi, I'm Omar – an Intune Administrator with over 50,000 devices under management, and former SCCM/MDT specialist. 
+                        I specialize in PowerShell automation and creating tools that make IT professionals' lives easier.
+                    </p>
+                    <p class="about-paragraph">
+                        With extensive experience in Microsoft Intune, SCCM, and MDT, I've built automation solutions that streamline 
+                        device management, software deployment, and security configurations across enterprise environments.
+                    </p>
+                    <p class="about-paragraph">
+                        My passion is creating practical solutions that solve real-world IT challenges. From automated software deployment 
+                        during imaging to AI-powered productivity tools, I focus on building things that actually make a difference.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-server"></i>
+                            <span>50k+ Devices Managed</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-code"></i>
+                            <span>PowerShell Automation</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-cloud"></i>
+                            <span>Microsoft Intune</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tools"></i>
+                            <span>Practical Solutions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovative solutions for modern IT challenges</p>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded dynamically from projects.json -->
+            </div>
+            <div class="projects-cta">
+                <a href="https://github.com/thekingsmakers" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-github"></i>
+                    View All Projects on GitHub
+                </a>
+            </div>
+                </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Technologies and tools I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title">Microsoft Technologies</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-microsoft"></i>
+                            <span>Microsoft Intune</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server"></i>
+                            <span>SCCM/MDT</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>BitLocker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>Active Directory</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title">Programming & Scripting</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-microsoft"></i>
+                            <span>PowerShell</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-github"></i>
+                            <span>Git & GitHub</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title">Azure & Cloud</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-azure"></i>
+                            <span>Azure</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud Services</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-server"></i>
+                            <span>Virtual Machines</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>Azure SQL</span>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p>For consultancy and expertise, contact me at <strong>redomarjobs@gmail.com</strong> or <strong>+97455102655</strong>.</p>
-            <p>Follow me on <a href="https://github.com/thekingsmakers" target="_blank" rel="noopener noreferrer">GitHub</a> and <a href="https://twitter.com/thekingsmakers" target="_blank" rel="noopener noreferrer">Twitter</a>.</p>
-            <p>© 2024 @thekingsmakers. All rights reserved.</p>
-        </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's discuss your IT automation needs</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>redomarjobs@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>+974 5510 2655</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Qatar</p>
+                        </div>
+                    </div>
     </div>
-
-    <!-- Chatbot Popup -->
-    <div class="chatbot-popup" id="chatbotPopup">
-        <div class="chatbot-header">
-            <h3>Chat with Omar</h3>
-            <button class="close-btn" id="closeChatbot">&times;</button>
+                <div class="contact-social">
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/thekingsmakers" class="social-link" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com/thekingsmakers" class="social-link" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/omar-osman-mahat/" class="social-link" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
         </div>
-        <div class="chatbot-body" id="chatbotBody">
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Type your message..." disabled>
-                <button id="sendMessage">Send</button>
             </div>
         </div>
     </div>
-    <button class="chatbot-toggle" id="chatbotToggle">
-        <i class="fas fa-comments"></i>
-    </button>
+    </section>
 
-    <!-- Moving Background Elements -->
-    <div class="background-elements">
-        <div class="circle"></div>
-        <div class="square"></div>
-        <div class="triangle"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Omar Osman Mahat</h3>
+                    <p>IT Systems Expert & PowerShell Automation Specialist</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>IT Automation</li>
+                        <li>PowerShell Scripting</li>
+                        <li>SCCM/Intune Consulting</li>
+                        <li>Security Implementation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Omar Osman Mahat. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
     </div>
 
-    <!-- JavaScript -->
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-text">Loading Site</div>
+            <div class="loader-percentage" id="loadingPercentage">0%</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar" id="loadingProgressBar"></div>
+            </div>
+            <div class="loader-status" id="loadingStatus">Initializing...</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
-    <script>
-        // JavaScript for Microsoft Services Status
-        const sites = [
-            { name: 'Microsoft Entra ID', url: 'https://aka.ms/MSEntraPortal' },
-            { name: 'Azure Portal', url: 'https://portal.azure.com' },
-            { name: 'Microsoft Intune', url: 'https://intune.microsoft.com/' },
-            { name: 'Exchange Admin Center', url: 'https://admin.exchange.microsoft.com' },
-            { name: 'Microsoft 365 Admin Center', url: 'https://admin.microsoft.com' },
-            { name: 'Defender XDR', url: 'https://security.microsoft.com' },
-            { name: 'Microsoft Purview Compliance', url: 'https://compliance.microsoft.com' },
-            { name: 'Teams Admin Center', url: 'https://admin.teams.microsoft.com' }
-        ];
-
-        function checkStatus() {
-            const statusList = document.getElementById('statusList');
-            statusList.innerHTML = '';
-            
-            sites.forEach(site => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `Checking ${site.name}...`;
-                statusList.appendChild(listItem);
-
-                fetch(site.url, { mode: 'no-cors' })
-                    .then(() => {
-                        listItem.textContent = `${site.name} is up and running`;
-                        listItem.className = 'status-up';
-                    })
-                    .catch(() => {
-                        listItem.textContent = `${site.name} is down`;
-                        listItem.className = 'status-down';
-                    });
-            });
-        }
-        
-        window.onload = () => {
-            setInterval(checkStatus, 5000);
-        };
-    </script>
 </body>
 </html>

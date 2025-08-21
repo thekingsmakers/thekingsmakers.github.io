@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Services Status - Omar Osman Mahat</title>
+    <meta name="description" content="Real-time status of Microsoft Azure services. Check if Azure services are online or experiencing issues.">
+    <meta name="keywords" content="Azure, Microsoft Azure, Azure Status, Cloud Services, IT Professional">
+    <meta name="author" content="Omar Osman Mahat">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Azure Services Status - Omar Osman Mahat">
+    <meta property="og:description" content="Real-time status of Microsoft Azure services">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thekingsmakers.github.io/azure-status">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Azure Services Status">
+    <meta name="twitter:description" content="Real-time status of Microsoft Azure services">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700;800&family=Cascadia+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Azure Services Status",
+        "description": "Real-time status of Microsoft Azure services",
+        "author": {
+            "@type": "Person",
+            "name": "Omar Osman Mahat",
+            "jobTitle": "Intune Administrator",
+            "url": "https://github.com/thekingsmakers"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Omar Osman Mahat</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="azure-status.html" class="nav-link active">Azure Status</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Azure Services Status</h1>
+                <p class="hero-description">Real-time monitoring of Microsoft Azure services worldwide</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="0" id="totalServices">0</div>
+                        <div class="stat-label">Total Services</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="0" id="onlineServices">0</div>
+                        <div class="stat-label">Online</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="0" id="offlineServices">0</div>
+                        <div class="stat-label">Offline</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" id="refreshStatus">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh Status
+                    </button>
+                    <button class="btn btn-secondary" id="autoRefresh">
+                        <i class="fas fa-clock"></i>
+                        Auto Refresh: OFF
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating shapes for visual appeal -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </section>
+
+    <!-- Azure Services Status Section -->
+    <section class="azure-status">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Service Status Overview</h2>
+                <p class="section-subtitle">Live status of Azure services across all regions</p>
+            </div>
+            
+            <!-- Status Filters -->
+            <div class="status-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-globe"></i>
+                    All Services
+                </button>
+                <button class="filter-btn" data-filter="online">
+                    <i class="fas fa-check-circle"></i>
+                    Online
+                </button>
+                <button class="filter-btn" data-filter="offline">
+                    <i class="fas fa-times-circle"></i>
+                    Offline
+                </button>
+                <button class="filter-btn" data-filter="degraded">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Degraded
+                </button>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded dynamically -->
+            </div>
+            
+            <!-- Last Updated -->
+            <div class="last-updated">
+                <p><i class="fas fa-clock"></i> Last updated: <span id="lastUpdated">Never</span></p>
+                <p><i class="fas fa-info-circle"></i> Status updates every 5 minutes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Omar Osman Mahat</h3>
+                    <p>IT Systems Expert & PowerShell Automation Specialist</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="azure-status.html">Azure Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>IT Automation</li>
+                        <li>PowerShell Scripting</li>
+                        <li>SCCM/Intune Consulting</li>
+                        <li>Security Implementation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Omar Osman Mahat. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="azure-status.js"></script>
+</body>
+</html>
