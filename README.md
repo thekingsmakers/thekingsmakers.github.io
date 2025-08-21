@@ -239,6 +239,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Built with ❤️ for the IT community**
+**Built with ❤️ by thekingsmakers for the IT community**
 
-*Last updated: January 2024*
+*Last updated: August 2025*
