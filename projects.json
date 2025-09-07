@@ -11,6 +11,19 @@
     "technologies": ["PowerShell", "WPF", "Active Directory"],
     "lastUpdated": "2024-01-15"
   },
+{
+    "title": "Powershell Code Signing Gui",
+    "description": "GUI-based PowerShell tool rgar signs Powershell scripts",
+    "tags": ["PowerShell", "GUI", "Security", "Automation"],
+    "image": "fas fa-key",
+    "github": "https://github.com/thekingsmakers/Intune/raw/refs/heads/main/Scripting/Powershell/Scriptssigner.exe",
+    "demo": null,
+    "featured": true,
+    "category": "Security",
+    "technologies": ["PowerShell", "WPF", "Certificate Authority"],
+    "lastUpdated": "2024-01-15"
+  },
+  
   {
     "title": "BitLocker Compliance Checker",
     "description": "Evaluates device readiness for BitLocker silent encryption. Checks TPM status, secure boot, and other security requirements.",
