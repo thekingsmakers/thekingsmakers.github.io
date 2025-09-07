@@ -1,4 +1,16 @@
 [
+{
+    "title": "Intune Script Compliance Validator",
+    "description": "PowerShell WinForms tool to validate Microsoft Intune PowerShell scripts, Proactive Remediations (PR) detection/remediation scripts, and Custom Compliance discovery scripts. It highlights common pitfalls and offers optional auto-fixes where safe.",
+    "tags": ["PowerShell", "GUI", "Security", "Automation"],
+    "image": "fas fa-key",
+    "github": "https://github.com/thekingsmakers/Intune/raw/refs/heads/main/intune%20Scripts%20Validator/intunescriptsValidator.exe",
+    "demo": null,
+    "featured": true,
+    "category": "Intune",
+    "technologies": ["PowerShell", "WPF", "Scripts"],
+    "lastUpdated": "2024-01-15"
+  },
   {
     "title": "Password Expiration Notification",
     "description": "GUI-based PowerShell tool that alerts users when passwords are near expiration. Features customizable notifications and automatic password reset capabilities.",
