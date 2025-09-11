@@ -1,5 +1,17 @@
 [
 {
+    "title": "Intune Scripts and Remediation Checker",
+    "description": "This lightweight EXE provides a modern GUI to simulate Microsoft Intune detection and remediation scripts. Features include",
+    "tags": ["PowerShell", "GUI", "Security", "Automation"],
+    "image": "fas fa-robot",
+    "github": "https://github.com/thekingsmakers/Intune/raw/refs/heads/main/Scripting/ScriptsandRemediationchecker/IntuneScriptsandRemediationchecker.exe",
+    "demo": null,
+    "featured": true,
+    "category": "Intune",
+    "technologies": ["PowerShell", "WPF", "Scripts", "Intune", "Remediation"],
+    "lastUpdated": "2024-01-15"
+  }, 
+{
     "title": "Intune Script Compliance Validator",
     "description": "PowerShell WinForms tool to validate Microsoft Intune PowerShell scripts, Proactive Remediations (PR) detection/remediation scripts, and Custom Compliance discovery scripts. It highlights common pitfalls and offers optional auto-fixes where safe.",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
