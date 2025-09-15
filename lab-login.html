@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Login - Thekingsmaker</title>
+    <meta name="description" content="Welcome page for the lab environment with security information and access link.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700;800&family=Cascadia+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Omar Mahat</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#skills" class="nav-link">Skills</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="azure-status.html" class="nav-link">Azure Status</a>
+                <a href="lab-login.html" class="nav-link active">Lab Login</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Lab Login Banner -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Authorized Access Notice</h1>
+                <p class="hero-description">This page provides information and a link to the private lab portal.</p>
+                <div class="hero-stats" style="gap: 16px;">
+                    <div class="stat-item">
+                        <div class="stat-title" style="font-size: 18px;">Security Information</div>
+                        <div class="stat-label" style="max-width: 720px; text-align: left;">
+                            <ul style="list-style: none; padding: 0; margin: 0; line-height: 1.8;">
+                                <li><i class="fas fa-shield-alt"></i> For authorized users only. Activity may be monitored and logged.</li>
+                                <li><i class="fas fa-lock"></i> Do not share credentials. Use strong, unique passwords and MFA where required.</li>
+                                <li><i class="fas fa-info-circle"></i> Close your session and browser when finished. Report suspicious activity immediately.</li>
+                                <li><i class="fas fa-user-check"></i> By continuing, you acknowledge and accept the usage and security policy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="https://lab.thekingsmaker.org/guacamole" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Proceed to Lab Portal
+                    </a>
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Website
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lab Environment</h3>
+                    <p>Use of this system is restricted to authorized individuals.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="azure-status.html">Azure Status</a></li>
+                        <li><a href="lab-login.html">Lab Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li>Report issues via the contact page</li>
+                        <li>Follow security best practices</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Thekingsmaker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Hidden projects grid placeholder for shared script compatibility -->
+    <div id="projectsGrid" style="display: none;"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-text">Loading Site</div>
+            <div class="loader-percentage" id="loadingPercentage">0%</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar" id="loadingProgressBar"></div>
+            </div>
+            <div class="loader-status" id="loadingStatus">Initializing...</div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a1fcf602eb094f9d819d856d39252c8d"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
