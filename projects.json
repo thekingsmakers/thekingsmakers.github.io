@@ -4,7 +4,7 @@
     "description": "Modern Windows Forms GUI for downloading Microsoft Store packages with all its dependancies.",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
     "image": "fas fa-robot",
-    "github": "https://github.com/thekingsmakers/Intune/tree/main/Scripting/StoreAppsDownloader",
+    "Download": "https://github.com/thekingsmakers/Intune/tree/main/Scripting/StoreAppsDownloader",
     "demo": null,
     "featured": true,
     "category": "MsStore",
