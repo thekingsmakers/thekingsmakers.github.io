@@ -1,7 +1,7 @@
 [
 {
     "title": "Microsoft Store Apps downloader",
-    "description": "Modern Windows Forms GUI for downloading Microsoft Store packages without changing the original download logic.",
+    "description": "Modern Windows Forms GUI for downloading Microsoft Store packages with all its dependancies.",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
     "image": "fas fa-robot",
     "github": "https://github.com/thekingsmakers/Intune/tree/main/Scripting/StoreAppsDownloader",
