@@ -1,7 +1,19 @@
 [
 {
+    "title": "Microsoft Store Apps downloader,
+    "description": "Modern Windows Forms GUI for downloading Microsoft Store packages without changing the original download logic.",
+    "tags": ["PowerShell", "GUI", "Security", "Automation"],
+    "image": "fas fa-robot",
+    "github": https://github.com/thekingsmakers/Intune/tree/main/Scripting/StoreAppsDownloader",
+    "demo": null,
+    "featured": true,
+    "category": "MsStore",
+    "technologies": ["PowerShell", "WPF", "Scripts", "Msix", "Appx"],
+    "lastUpdated": "2024-01-15"
+  }, 
+{
     "title": "Intune Scripts and Remediation Checker",
-    "description": "This lightweight EXE provides a modern GUI to simulate Microsoft Intune detection and remediation scripts. Features include",
+    "description": "This lightweight EXE provides a modern GUI to simulate Microsoft Intune detection and remediation scripts.",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
     "image": "fas fa-robot",
     "github": "https://github.com/thekingsmakers/Intune/raw/refs/heads/main/Scripting/ScriptsandRemediationchecker/IntuneScriptsandRemediationchecker.exe",
