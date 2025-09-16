@@ -52,7 +52,7 @@
     "description": "GUI-based PowerShell tool rgar signs Powershell scripts",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
     "image": "fas fa-robot",
-    "github": "https://github.com/thekingsmakers/Intune/raw/refs/heads/main/Scripting/Powershell/Scriptssigner.exe",
+    "github": "https://github.com/thekingsmakers/Intune/raw/refs/heads/main/Scripting/Powershell%20Script%20Signer/Scriptssigner.exe",
     "demo": null,
     "featured": true,
     "category": "Security",
