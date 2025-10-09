@@ -1,5 +1,17 @@
 [
 {
+    "title": "TKM UNINSTALLER",
+    "description": "Command-line software detector and uninstaller for Windows automation (e.g., Intune).",
+    "tags": ["PowerShell", "GUI", "Security", "Automation"],
+    "image": "fas fa-robot",
+    "github": "https://github.com/thekingsmakers/Intune/tree/main/TKM-Uninstaller-V.1",
+    "demo": null,
+    "featured": true,
+    "category": "Powershell",
+    "technologies": ["PowerShell", "WPF", "Scripts", "Msix", "Appx", "EXE", "MSI"],
+    "lastUpdated": "2025-10-09"
+  }, 
+{
     "title": "Microsoft Store Apps downloader",
     "description": "Modern Windows Forms GUI for downloading Microsoft Store packages with all its dependancies.",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
