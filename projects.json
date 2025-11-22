@@ -1,5 +1,17 @@
 [
 {
+    "title": "Bulk Activate Windows 10 Extended Security update",
+    "description": "Automates switching and activating Windows 10 devices to ESU via Intune remediation.",
+    "tags": ["PowerShell", "Scripts", "Intune", "Automation", "Windows10"],
+    "image": "fas fa-robot",
+    "github": "https://github.com/thekingsmakers/Intune/tree/main/Windows%2010%20ESU%20Activation-Intune%20Remediation",
+    "demo": null,
+    "featured": true,
+    "category": "Powershell",
+    "technologies": ["PowerShell", "WPF", "Scripts", "Msix", "Appx", "EXE", "MSI"],
+    "lastUpdated": "2025-10-09"
+  }, 
+{
     "title": "TKM UNINSTALLER",
     "description": "Command-line software detector and uninstaller for Windows automation (e.g., Intune).",
     "tags": ["PowerShell", "GUI", "Security", "Automation"],
