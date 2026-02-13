@@ -1,0 +1,7 @@
+version: '3'
+services:
+  website:
+    build: .
+    ports:
+      - "2233:80"
+    restart: always
