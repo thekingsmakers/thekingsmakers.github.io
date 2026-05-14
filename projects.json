@@ -1,5 +1,17 @@
 [
 {
+    "title": "AutoPilot With SCCM and MDT",
+    "description": "This toolset simplifies the device enrollment process for Microsoft Intune by automating several manual steps. It handles everything from initial file setup and time synchronization to hardware hash uploading and final system preparation (Sysprep).",
+    "tags": ["PowerShell", "Scripts", "Intune", "Automation", "Windows10"],
+    "image": "fas fa-robot",
+    "github": "https://github.com/thekingsmakers/Intune/tree/main/AutoPilot",
+    "demo": null,
+    "featured": true,
+    "category": "Powershell",
+    "technologies": ["PowerShell", "WPF", "Scripts", "Msix", "Appx", "EXE", "MSI"],
+    "lastUpdated": "2025-10-09"
+  },
+{
     "title": "Bulk Activate Windows 10 Extended Security update",
     "description": "Automates switching and activating Windows 10 devices to ESU via Intune remediation.",
     "tags": ["PowerShell", "Scripts", "Intune", "Automation", "Windows10"],
