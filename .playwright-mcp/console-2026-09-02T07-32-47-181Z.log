@@ -1,0 +1,6 @@
+[    2005ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://dribbble.com/favicon.ico:0
+[    7173ms] [ERROR] Failed to load resource: the server responded with a status of 405 () @ https://dribbble.com/shots/log_views:0
+[    7174ms] [ERROR] Error tracking shot views: Error: Failed logging shot views: 
+    at Object.trackShots (https://cdn.dribbble.com/assets/vite/assets/application-24e656ed.js:13:2152) @ https://cdn.dribbble.com/assets/vite/assets/application-24e656ed.js:12
+[   15673ms] [ERROR] Not signed in with the identity provider. @ https://dribbble.com/shots/23370518-Web-Sidebar-Menu:0
+[   29999ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://accounts.google.com/gsi/client:87

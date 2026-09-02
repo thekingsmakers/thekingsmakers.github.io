@@ -1,12 +1,10 @@
 // ===== GLOBAL VARIABLES =====
-let currentTheme = localStorage.getItem('theme') || 'dark';
 let isScrolled = false;
 
 // ===== DOM ELEMENTS =====
 const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
-const themeToggle = document.getElementById('themeToggle');
 const backToTop = document.getElementById('backToTop');
 const loadingScreen = document.getElementById('loadingScreen');
 const loadingPercentage = document.getElementById('loadingPercentage');
@@ -16,28 +14,29 @@ const projectsGrid = document.getElementById('projectsGrid');
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Add loading class to body to hide site content
-    document.body.classList.add('loading');
-    
+    if (loadingScreen && loadingPercentage && loadingProgressBar && loadingStatus) {
+        document.body.classList.add('loading');
+    }
+
     initializeApp();
     setupEventListeners();
+    initializeAssistant();
     
     // Load projects with a fallback
-    setTimeout(() => {
-        loadProjects();
-    }, 100);
+    if (projectsGrid) {
+        setTimeout(() => {
+            loadProjects();
+        }, 100);
+    }
     
     animateNumbers();
 });
 
 // ===== APP INITIALIZATION =====
 function initializeApp() {
-    // Set initial theme
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateThemeIcon();
-    
-    // Start cool loading sequence
-    startLoadingSequence();
+    if (loadingScreen && loadingPercentage && loadingProgressBar && loadingStatus) {
+        startLoadingSequence();
+    }
     
     // Initialize scroll animations
     initializeScrollAnimations();
@@ -49,7 +48,7 @@ function startLoadingSequence() {
     const loadingSteps = [
         { status: 'Initializing...', progress: 20 },
         { status: 'Loading assets...', progress: 40 },
-        { status: 'Setting up theme...', progress: 60 },
+        { status: 'Preparing layout...', progress: 60 },
         { status: 'Preparing content...', progress: 80 },
         { status: 'Almost ready...', progress: 95 },
         { status: 'Welcome!', progress: 100 }
@@ -103,13 +102,14 @@ function startLoadingSequence() {
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
     // Navigation toggle
-    navToggle.addEventListener('click', toggleMobileMenu);
-    
-    // Theme toggle
-    themeToggle.addEventListener('click', toggleTheme);
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMobileMenu);
+    }
     
     // Back to top
-    backToTop.addEventListener('click', scrollToTop);
+    if (backToTop) {
+        backToTop.addEventListener('click', scrollToTop);
+    }
     
     // Scroll events
     window.addEventListener('scroll', handleScroll);
@@ -125,7 +125,7 @@ function setupEventListeners() {
                     block: 'start'
                 });
                 // Close mobile menu if open
-                if (navMenu.classList.contains('active')) {
+                if (navMenu && navMenu.classList.contains('active')) {
                     toggleMobileMenu();
                 }
             }
@@ -134,34 +134,23 @@ function setupEventListeners() {
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', function(e) {
-        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        if (navToggle && navMenu && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
         }
     });
 }
 
 // ===== MOBILE NAVIGATION =====
 function toggleMobileMenu() {
+    if (!navMenu || !navToggle) {
+        return;
+    }
+
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
-}
-
-// ===== THEME MANAGEMENT =====
-function toggleTheme() {
-    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    localStorage.setItem('theme', currentTheme);
-    updateThemeIcon();
-}
-
-function updateThemeIcon() {
-    const icon = themeToggle.querySelector('i');
-    if (currentTheme === 'dark') {
-        icon.className = 'fas fa-moon';
-    } else {
-        icon.className = 'fas fa-sun';
-    }
+    navToggle.setAttribute('aria-expanded', String(navMenu.classList.contains('active')));
 }
 
 // ===== SCROLL HANDLING =====
@@ -170,18 +159,18 @@ function handleScroll() {
     
     // Navbar background
     if (scrollTop > 50 && !isScrolled) {
-        navbar.classList.add('scrolled');
+        if (navbar) navbar.classList.add('scrolled');
         isScrolled = true;
     } else if (scrollTop <= 50 && isScrolled) {
-        navbar.classList.remove('scrolled');
+        if (navbar) navbar.classList.remove('scrolled');
         isScrolled = false;
     }
     
     // Back to top button
     if (scrollTop > 300) {
-        backToTop.classList.add('visible');
+        if (backToTop) backToTop.classList.add('visible');
     } else {
-        backToTop.classList.remove('visible');
+        if (backToTop) backToTop.classList.remove('visible');
     }
     
     // Trigger scroll animations
@@ -332,6 +321,10 @@ function getDefaultProjects() {
 }
 
 function renderProjects(projects) {
+    if (!projectsGrid) {
+        return;
+    }
+
     const featuredProjects = projects.filter(project => project.featured);
     
     projectsGrid.innerHTML = featuredProjects.map(project => `
@@ -426,13 +419,249 @@ window.addEventListener('scroll', optimizedScrollHandler);
 function handleKeyboardNavigation(e) {
     if (e.key === 'Escape') {
         // Close mobile menu
-        if (navMenu.classList.contains('active')) {
+        if (navMenu && navMenu.classList.contains('active')) {
             toggleMobileMenu();
         }
     }
 }
 
 document.addEventListener('keydown', handleKeyboardNavigation);
+
+// ===== BUILT-IN SITE ASSISTANT =====
+function normalizeSearchText(value) {
+    return value
+        .toLowerCase()
+        .replace(/[^a-z0-9+#. ]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function getSearchTerms(question) {
+    const ignoredTerms = new Set(['a', 'about', 'all', 'an', 'and', 'any', 'are', 'can', 'do', 'for', 'from', 'how', 'i', 'in', 'is', 'it', 'me', 'of', 'on', 'or', 'site', 'tell', 'the', 'this', 'to', 'what', 'which', 'who', 'with', 'you']);
+    return normalizeSearchText(question)
+        .split(' ')
+        .filter(term => term.length > 1 && !ignoredTerms.has(term));
+}
+
+function createSearchEntry(title, text, url, keywords = '') {
+    return { title, text: text.replace(/\s+/g, ' ').trim(), url, keywords };
+}
+
+function getPageSearchEntries() {
+    const sections = [
+        { id: 'home', title: 'Home', keywords: 'omar osman intune administrator sccm devices automation' },
+        { id: 'about', title: 'About Omar', keywords: 'experience intune sccm mdt powershell automation enterprise' },
+        { id: 'projects', title: 'Featured Projects', keywords: 'projects tools scripts github powershell intune' },
+        { id: 'skills', title: 'Technical Skills', keywords: 'skills microsoft intune sccm mdt bitlocker active directory powershell python javascript git azure cloud sql' },
+        { id: 'contact', title: 'Contact', keywords: 'contact email phone qatar github twitter' }
+    ];
+
+    return sections.map(section => {
+        const element = document.getElementById(section.id);
+        return createSearchEntry(section.title, element ? element.textContent : section.keywords, `#${section.id}`, section.keywords);
+    });
+}
+
+async function getAdditionalPageEntries() {
+    const pages = [
+        { url: './azure-status.html', title: 'Azure Services Status', keywords: 'azure status services monitoring online offline degraded refresh' },
+        { url: './lab-login.html', title: 'Lab Portal Access', keywords: 'lab login authorized security portal guacamole' }
+    ];
+    const entries = [];
+
+    for (const page of pages) {
+        try {
+            const response = await fetch(page.url);
+            if (!response.ok) continue;
+            const documentContent = new DOMParser().parseFromString(await response.text(), 'text/html');
+            entries.push(createSearchEntry(page.title, documentContent.body.textContent, page.url, page.keywords));
+        } catch (error) {
+            console.error(`Site assistant could not load ${page.url}:`, error);
+        }
+    }
+
+    return entries;
+}
+
+async function getSiteSearchEntries() {
+    const entries = getPageSearchEntries();
+    const additionalEntries = await getAdditionalPageEntries();
+    entries.push(...additionalEntries);
+
+    try {
+        const response = await fetch('./projects.json');
+        if (!response.ok) {
+            return entries;
+        }
+
+        const projects = await response.json();
+        return entries.concat(projects.map(project => ({
+            title: project.title,
+            text: `${project.description} ${project.tags.join(' ')} ${project.technologies.join(' ')}`,
+            url: project.github,
+            keywords: `${project.category} ${project.lastUpdated}`
+        })));
+    } catch (error) {
+        console.error('Site assistant could not load project data:', error);
+        return entries;
+    }
+}
+
+function findSiteResults(question, entries) {
+    const terms = getSearchTerms(question);
+    if (!terms.length) {
+        return [];
+    }
+
+    return entries
+        .map(entry => {
+            const title = normalizeSearchText(entry.title);
+            const content = normalizeSearchText(`${entry.text} ${entry.keywords}`);
+            const score = terms.reduce((total, term) => {
+                if (title.includes(term)) return total + 4;
+                if (content.includes(term)) return total + 2;
+                return total;
+            }, 0);
+            return { ...entry, score };
+        })
+        .filter(entry => entry.score > 0)
+        .sort((first, second) => second.score - first.score)
+        .slice(0, 3);
+}
+
+function createResultSummary(result, terms) {
+    const content = result.text.replace(/\s+/g, ' ').trim();
+    const normalizedContent = normalizeSearchText(content);
+    const matchIndex = terms
+        .map(term => normalizedContent.indexOf(term))
+        .filter(index => index >= 0)
+        .sort((first, second) => first - second)[0] || 0;
+    const start = Math.max(0, matchIndex - 80);
+    const end = Math.min(content.length, start + 220);
+    return `${start ? '...' : ''}${content.slice(start, end).trim()}${end < content.length ? '...' : ''}`;
+}
+
+function createAssistantReply(question, entries) {
+    const normalizedQuestion = normalizeSearchText(question);
+    if (/^(hi|hello|hey)( there)?$/.test(normalizedQuestion)) {
+        return 'Hello! I can help you find information about Omar, his skills, projects, services, or contact details.';
+    }
+
+    const results = findSiteResults(question, entries);
+    if (!results.length) {
+        return 'I can only answer questions using this website. Try asking about projects, PowerShell, Intune, Azure, technical skills, or contact details.';
+    }
+
+    const terms = getSearchTerms(question);
+    const primaryResult = results[0];
+    const summary = createResultSummary(primaryResult, terms);
+    const otherMatches = results.slice(1).map(result => result.title);
+    const related = otherMatches.length ? ` Related information is also available in ${otherMatches.join(' and ')}.` : '';
+    return `${summary}${related}`;
+}
+
+function addAssistantMessage(messages, text, type, results = []) {
+    const message = document.createElement('div');
+    message.className = `ai-message ai-message-${type}`;
+    const content = document.createElement('p');
+    content.textContent = text;
+    message.appendChild(content);
+
+    if (results.length) {
+        const resultList = document.createElement('div');
+        resultList.className = 'ai-search-results';
+        results.forEach(result => {
+            const link = document.createElement('a');
+            link.href = result.url;
+            link.textContent = result.title;
+            link.className = 'ai-search-result';
+            if (/^https?:\/\//.test(result.url)) {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+            }
+            resultList.appendChild(link);
+        });
+        message.appendChild(resultList);
+    }
+
+    messages.appendChild(message);
+    messages.scrollTop = messages.scrollHeight;
+}
+
+function initializeAssistant() {
+    const assistant = document.createElement('section');
+    assistant.className = 'ai-assistant';
+    assistant.innerHTML = `
+        <button class="ai-assistant-toggle" type="button" aria-label="Open AI assistant" aria-expanded="false">
+            <i class="fas fa-sparkles" aria-hidden="true"></i><span class="ai-assistant-prompt">Thekingsmaker Assistant</span>
+        </button>
+        <div class="ai-assistant-panel" hidden>
+            <div class="ai-assistant-header">
+                <div><i class="fas fa-robot"></i><strong>Thekingsmaker Assistant</strong></div>
+                <button class="ai-assistant-close" type="button" aria-label="Close AI assistant"><i class="fas fa-times"></i></button>
+            </div>
+            <p class="ai-assistant-intro">Search the site for projects, services, skills, contact details, Azure status, and lab access.</p>
+            <div class="ai-assistant-messages" aria-live="polite">
+                <div class="ai-message ai-message-bot"><p>Hello! I can help you find information across Thekingsmaker website.</p></div>
+            </div>
+            <form class="ai-assistant-form">
+                <label class="sr-only" for="ai-assistant-input">Your question</label>
+                <input id="ai-assistant-input" type="text" placeholder="Ask a question..." autocomplete="off" required>
+                <button type="submit" aria-label="Send question"><i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    `;
+
+    document.body.appendChild(assistant);
+
+    const toggle = assistant.querySelector('.ai-assistant-toggle');
+    const panel = assistant.querySelector('.ai-assistant-panel');
+    const close = assistant.querySelector('.ai-assistant-close');
+    const form = assistant.querySelector('.ai-assistant-form');
+    const input = assistant.querySelector('#ai-assistant-input');
+    const messages = assistant.querySelector('.ai-assistant-messages');
+    const prompt = assistant.querySelector('.ai-assistant-prompt');
+    const promptMessages = [
+        'Thekingsmaker Assistant',
+        'Search the site',
+        'Search for tools',
+        'Find Intune projects',
+        'Explore PowerShell tools'
+    ];
+    let promptIndex = 0;
+    let searchEntries = getPageSearchEntries();
+    getSiteSearchEntries().then(entries => {
+        searchEntries = entries;
+    });
+    const setOpen = (isOpen) => {
+        panel.hidden = !isOpen;
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) input.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(panel.hidden));
+    close.addEventListener('click', () => setOpen(false));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setInterval(() => {
+            prompt.classList.add('is-changing');
+            setTimeout(() => {
+                promptIndex = (promptIndex + 1) % promptMessages.length;
+                prompt.textContent = promptMessages[promptIndex];
+                prompt.classList.remove('is-changing');
+            }, 180);
+        }, 3200);
+    }
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const question = input.value.trim();
+        if (!question) return;
+
+        addAssistantMessage(messages, question, 'user');
+        const results = findSiteResults(question, searchEntries);
+        addAssistantMessage(messages, createAssistantReply(question, searchEntries), 'bot', results);
+        input.value = '';
+    });
+}
 
 // ===== SERVICE WORKER REGISTRATION (FOR PWA FEATURES) =====
 if ('serviceWorker' in navigator) {
@@ -492,7 +721,6 @@ if ('performance' in window) {
 // ===== EXPORT FOR MODULE USAGE =====
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
-        toggleTheme,
         loadProjects,
         animateNumbers
     };
