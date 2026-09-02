@@ -586,13 +586,13 @@ body {
 
 /* Default dark theme */
 html:not([data-theme]) {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-card: #334155;
-    --text-primary: #ffffff;
-    --text-secondary: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border-color: #475569;
+    --bg-primary: #f3f4f6;
+    --bg-secondary: #eceef2;
+    --bg-card: #fafbfc;
+    --text-primary: #17181b;
+    --text-secondary: #41434a;
+    --text-muted: #777b85;
+    --border-color: #dde0e6;
 }
 
 /* ===== TYPOGRAPHY ===== */
