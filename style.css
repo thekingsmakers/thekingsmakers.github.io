@@ -2959,6 +2959,13 @@ body {
     border-top-color: #dde0e6;
 }
 
+.skill-item span,
+.contact-social h3,
+.footer-bottom p {
+    color: #303136;
+    opacity: 1;
+}
+
 .theme-toggle,
 .back-to-top {
     color: #ffffff;
