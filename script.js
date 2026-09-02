@@ -665,14 +665,20 @@ function initializeAssistant() {
 
 // ===== SERVICE WORKER REGISTRATION (FOR PWA FEATURES) =====
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
+    window.addEventListener('load', async () => {
+        const serviceWorkerPath = '/sw.js';
+        try {
+            const response = await fetch(serviceWorkerPath, { method: 'HEAD', cache: 'no-store' });
+            if (!response.ok) {
+                console.warn(`Service worker not found (${response.status}). Skipping registration.`);
+                return;
+            }
+
+            const registration = await navigator.serviceWorker.register(serviceWorkerPath);
+            console.log('SW registered: ', registration);
+        } catch (registrationError) {
+            console.warn('SW registration skipped: ', registrationError);
+        }
     });
 }
 
