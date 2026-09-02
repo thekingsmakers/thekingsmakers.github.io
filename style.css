@@ -2962,8 +2962,14 @@ body {
 .skill-item span,
 .contact-social h3,
 .footer-bottom p {
-    color: #303136;
-    opacity: 1;
+    color: #303136 !important;
+    opacity: 1 !important;
+}
+
+.skill-item,
+.contact-social,
+.footer-bottom {
+    opacity: 1 !important;
 }
 
 .theme-toggle,
